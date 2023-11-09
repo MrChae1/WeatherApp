@@ -90,10 +90,9 @@ nav{
             }
         }
         .cloud-formation{
-            width: 40%;
+            width: 30%;
             height: 100%;
             display: flex;
-            padding-top: 11px;
             justify-content: center;
             position: relative;
             .condition-desc{
@@ -103,9 +102,11 @@ nav{
                 position: absolute;
             }
             .Today-weather{
-                height: 40px;
-                width: 50px;
-                fill: #fff;
+                height: 70px;
+                width: 110px;
+                position: absolute;
+                bottom: 1px;
+                right: 0;
             }
         }
     }
