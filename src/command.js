@@ -4,14 +4,12 @@ export const getResponse = async (location) => {
     const convert = await response.json();
     return convert;
 }
-
-export const displayAll = async(location) => {
-    const Responses = await getResponse(location);
-    return Responses;
+export const forAsideTag = (allTag, Responses) => {
+    allTag[2].innerHTML = Responses.location.name; //h3 in aside header
+    allTag[4].innerHTML = Responses.current.condition.text; // paragraph in aside header
+    allTag[5].src = Responses.current.condition.icon; // img in aside header
 }
 
-// export const displayLocation = async () => {
-//     const location = await 
-//     const getlocation = location.location
-    
-// }
+
+
+
