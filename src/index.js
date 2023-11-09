@@ -1,5 +1,5 @@
 import './sass/mainStyle.scss';
-import { getResponse, forAsideTag} from './command';
+import { celORFahra } from './command';
 
 document.addEventListener('DOMContentLoaded', () =>{
   const defaultLocation = 'bulacan';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             </div>
           </header>
           <article class="aside-article">
-            <h2 class="temp-container">83°F</h2>
+            <h2 class="temp-container"></h2>
             <div class="inside-article">
               <p class="humidity">Humidity:<span class="humidity-span"> 88°F</span></p>
               <p class="feelsLike">Feels Like:<span class="feels-span"> 27.4%</span></p>
@@ -58,22 +58,12 @@ document.addEventListener('DOMContentLoaded', () =>{
 
       const mainAside = insideMain.querySelector('aside');
       const allTag = Array.from(mainAside.querySelectorAll('*'));
-      // const userLocation = mainAside.querySelector('.user-location');
-      // const Weathercondition = mainAside.querySelector('.condition-desc');
-      // const 
-      async function runAll(){
-        const Responses = await getResponse(defaultLocation);
-        forAsideTag(allTag, Responses);
-      }
-  
-      runAll();
+      const checker = true;
+      celORFahra(allTag, defaultLocation, checker);
+
 
       return insideMain;
     }
-
-    
-    
-
 
     mainContainer.append(headerFunction(), mainSection());
     return mainContainer
