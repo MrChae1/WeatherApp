@@ -1,14 +1,11 @@
 import './sass/mainStyle.scss';
+import { LandingPage } from './displayTab';
 
 
 function mainComponent(){
-    const mainLanding = document.createElement('main');
-    mainLanding.classList.add('mainLanding');
-    
-    
-    
-    
-    
+    const mainContainer = document.createElement('main');
+    mainContainer.classList.add('mainContainer');
+    mainContainer.append(LandingPage());
     return mainLanding
 }
 
