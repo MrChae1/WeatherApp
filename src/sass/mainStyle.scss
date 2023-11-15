@@ -1,3 +1,4 @@
+@import './ForLanding';
 *{
     box-sizing: border-box;
     padding: 0;
@@ -6,11 +7,10 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
-.mainLanding{
+.mainContainer{
     max-width: 100vw;
     min-height: 100vh;
     height: 100vh;
     width: 100vw;
     background-color: rgb(0, 0, 0, .5);
 }
-
