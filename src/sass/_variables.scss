@@ -1,0 +1,4 @@
+@mixin HeightAndWidth($Height){
+    width: 100%;
+    height: $Height;
+}
