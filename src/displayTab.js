@@ -6,6 +6,10 @@ export const LandingPage = () => {
     LPContainer.classList.add('LPContainer');
     const LPMain = document.createElement('div');
     LPMain.classList.add('LPMain');
+    const LPHeader = document.createElement('header');
+    LPHeader.classList.add('LPHeader');
+    LPContainer.append(LPHeader);
+
     
     return LPContainer;
 }
