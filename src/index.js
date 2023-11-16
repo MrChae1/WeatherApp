@@ -5,8 +5,8 @@ import { LandingPage } from './displayTab';
 function mainComponent(){
     const mainContainer = document.createElement('main');
     mainContainer.classList.add('mainContainer');
-    mainContainer.append(LandingPage());
-    return mainLanding
+    mainContainer.appendChild(LandingPage());
+    return mainContainer
 }
 
 document.body.append(mainComponent());
