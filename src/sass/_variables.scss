@@ -1,0 +1,14 @@
+
+@mixin forwidth($heigth){
+    width: 100%;
+    height: $heigth;
+}
+@mixin forHeaderElement(){
+    background-color: transparent;
+    border: 2px solid white;
+    font-weight: bold;
+}
+@mixin disPlay(){
+    display: flex;
+    align-items: center;
+}
