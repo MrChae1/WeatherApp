@@ -1,0 +1,41 @@
+@import './variables';
+header{
+    grid-area: 1/1/2/3;
+    @include forwidth(100px);
+    display: flex;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    .headerSection{
+        width: 50%;
+        height: 100%;
+        @include disPlay();
+        column-gap: 10px;
+        .title-Logo{
+            height: 50px;
+            fill: #fff;
+        }
+    }
+    nav{
+        height: 100%;
+        width: 50%;
+        @include disPlay();
+        justify-content: flex-end;
+        input{
+            padding: 1rem .5rem;
+            font-size: .7rem;
+            @include forHeaderElement();
+            border-radius: 5px 0 0 5px;
+        }
+        button{
+            padding: .9rem .5rem;
+            @include forHeaderElement();
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            &:hover{
+                background-color: red;
+                transition: 1s;
+            }
+        }
+    } 
+}
