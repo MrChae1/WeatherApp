@@ -12,3 +12,12 @@
     display: flex;
     align-items: center;
 }
+@mixin forSpan(){
+    color: white;
+    font-weight: bold; 
+}
+@mixin forHover(){
+    background-color: red;
+    transition: 1s;
+    cursor: pointer;
+}
