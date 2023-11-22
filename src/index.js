@@ -1,5 +1,7 @@
 import './sass/mainStyle.scss';
+import { DisplayAll } from './displayTab';
 function MainComponent(){
+    let defaultLocation = 'Bulacan';
     const mainContainer = document.createElement('main');
     mainContainer.classList.add('mainContainer');
 
@@ -17,7 +19,10 @@ function MainComponent(){
             <input type="text" class="input-nav" placeholder="What's your Location?">
             <button class="find-btn">Find</button>
         `;
-        mainHeader.appendChild(headerNav);
+        const UnitTemp = document.createElement('button');
+        UnitTemp.innerHTML = `°C / °F`;
+
+        mainHeader.appendChild(headerNav, UnitTemp);
         return mainHeader
     }
 
@@ -27,14 +32,15 @@ function MainComponent(){
         sectionHeader.classList.add('sectionHeader');
         sectionHeader.innerHTML = `
             <h3></h3>
+        `;
+        const sectionDiv = document.createElement('div');
+        sectionDiv.classList.add('sectionDiv');
+        sectionDiv.innerHTML = `
+            <h2></h2>
             <div class="Weather-Desc">
                 <img class="weather-img" src="" alt="">
                 <p class="weather-para"></p>
             </div> 
-        `;
-        const sectionDiv = document.createElement('div');
-        sectionDiv.innerHTML = `
-            <h2></h2>
             <article>
                 <p>HUMIDITY: <span class="Humidity"></span></p>
                 <p>WIND: <span class="Wind"></span></p>
@@ -42,13 +48,14 @@ function MainComponent(){
                 <p>VISIBILITY: <span class="visibility"></span></p>
             </article>
         `;
-        const sectionAside = document.createElement('aside');
-        const UnitTemp = document.createElement('button');
-        UnitTemp.innerHTML = `°C / °F`;
-        sectionAside.appendChild(UnitTemp);
+        // const sectionAside = document.createElement('aside');
+        
+        // sectionAside.appendChild(UnitTemp);
 
+        //Display data from WeatherAPI
+        DisplayAll(defaultLocation, sectionHeader);
 
-        mainSection.append(sectionHeader, sectionDiv, sectionAside);
+        mainSection.append(sectionHeader, sectionDiv);
         return mainSection;
     }
 
