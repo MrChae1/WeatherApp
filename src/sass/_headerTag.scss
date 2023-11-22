@@ -31,10 +31,8 @@ header{
             padding: .9rem .5rem;
             @include forHeaderElement();
             border-radius: 0 5px 5px 0;
-            cursor: pointer;
             &:hover{
-                background-color: red;
-                transition: 1s;
+                @include forHover();
             }
         }
     } 
