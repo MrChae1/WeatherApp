@@ -6,12 +6,18 @@ const getData = async (location) => {
     const response = await getResponse(location);
     return response;
 }
-export function DisplayAll(location, sectionHeader){
-    const FromSHeader = Array.from(sectionHeader.querySelectorAll('*'));
+export function DisplayAll(location, sectionDesc){
     getData(location).then((res) =>{
         console.log(res);
-        FromSHeader[0].innerHTML = res.location.name;
-        FromSHeader[2].src = res.current.condition.icon;
-        FromSHeader[3].innerHTML = res.current.condition.text;
+        for(let i = 0; i < sectionDesc.length; i++){
+            let newDesc = Array.from(sectionDesc[i].querySelectorAll('*'));
+
+            newDesc[2].innerHTML = res.location.name; //Location Name
+            newDesc[5].src = res.forecast.forecastday[i].day.condition.icon;
+            newDesc[6].innerHTML = res.forecast.forecastday[i].day.condition.text;
+        }
+        
     });
 }
+            // newDesc[5].res.forecast.forecastday[i].day.condition.icon;
+            // newDesc[6].res.forecast.forecastday[i].day.condition.text;
