@@ -26,38 +26,43 @@ function MainComponent(){
         return mainHeader
     }
 
-    const sectionTag = () => {
-        const mainSection = document.createElement('section');
-        const sectionHeader = document.createElement('div');
-        sectionHeader.classList.add('sectionHeader');
-        sectionHeader.innerHTML = `
-            <h3></h3>
-        `;
-        const sectionDiv = document.createElement('div');
-        sectionDiv.classList.add('sectionDiv');
-        sectionDiv.innerHTML = `
-            <h2></h2>
-            <div class="Weather-Desc">
-                <img class="weather-img" src="" alt="">
-                <p class="weather-para"></p>
-            </div> 
-            <article>
+    const DescriptionContainer = () => {
+        const elementContainer = document.createElement('article');
+        elementContainer.innerHTML = `
+            <div class="articleHeader">
+                <h3></h3>
+            </div>
+            <div class="articleSection">
+                <h2></h2>
+                <img class="weatherImg" src="">
+                <p></p>
+            </div>
+            <div class="subSection">
                 <p>HUMIDITY: <span class="Humidity"></span></p>
                 <p>WIND: <span class="Wind"></span></p>
                 <p>FEELS LIKE: <span class="feelsLike"></span></p>
                 <p>VISIBILITY: <span class="visibility"></span></p>
-            </article>
+            </div>
         `;
-        // const sectionAside = document.createElement('aside');
-        
-        // sectionAside.appendChild(UnitTemp);
+        return elementContainer;
+    }
 
-        //Display data from WeatherAPI
-        DisplayAll(defaultLocation, sectionHeader);
+    const sectionTag = () => {
+        const mainSection = document.createElement('section');
+        mainSection.innerHTML = `
+            <div class="weatherDescription today"></div>
+            <div class="weatherDescription tomorrow"></div>
+            <div class="weatherDescription nextday"></div>
+        `
+        const weatherDescription = Array.from(mainSection.querySelectorAll('.weatherDescription'));
+        weatherDescription.forEach(div => div.append(DescriptionContainer()));
+        //Display data from Api
 
-        mainSection.append(sectionHeader, sectionDiv);
+        DisplayAll(defaultLocation, weatherDescription);
         return mainSection;
     }
+
+
 
     mainContainer.append(headerTag(), sectionTag());
     return mainContainer
