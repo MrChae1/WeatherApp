@@ -1,7 +1,7 @@
 import './sass/mainStyle.scss';
-import { DisplayAll } from './displayTab';
+import { DisplayAll,forDisplay } from './displayTab';
 function MainComponent(){
-    let defaultLocation = 'Bulacan';
+    let defaultLocation = 'Atlanta';
     const mainContainer = document.createElement('main');
     mainContainer.classList.add('mainContainer');
 
@@ -19,29 +19,35 @@ function MainComponent(){
             <input type="text" class="input-nav" placeholder="What's your Location?">
             <button class="find-btn">Find</button>
         `;
-        const UnitTemp = document.createElement('button');
-        UnitTemp.innerHTML = `°C / °F`;
+        // const UnitTemp = document.createElement('button');
+        // UnitTemp.innerHTML = `°C / °F`;
+        
+        const NavElement = Array.from(headerNav.querySelectorAll('*'));
+        console.log(NavElement);
+        NavElement[1].addEventListener('click', () =>{
+            defaultLocation = NavElement[0].value;
+            const newSecTag = sectionTag();
+            forDisplay(defaultLocation, newSecTag);
+        });
 
-        mainHeader.appendChild(headerNav, UnitTemp);
+        mainHeader.appendChild(headerNav);
         return mainHeader
     }
 
     const DescriptionContainer = () => {
         const elementContainer = document.createElement('article');
         elementContainer.innerHTML = `
-            <div class="articleHeader">
-                <h3></h3>
-            </div>
+            <h5></h5>
             <div class="articleSection">
                 <h2></h2>
                 <img class="weatherImg" src="">
                 <p></p>
             </div>
             <div class="subSection">
-                <p>HUMIDITY: <span class="Humidity"></span></p>
-                <p>WIND: <span class="Wind"></span></p>
-                <p>FEELS LIKE: <span class="feelsLike"></span></p>
-                <p>VISIBILITY: <span class="visibility"></span></p>
+                <p>HUMIDITY: <span class="Humidity"></span>%</p>
+                <p>WIND: <span class="Wind"></span>Kph</p>
+                <p>Chance of Rain: <span class="feelsLike"></span>%</p>
+                <p>VISIBILITY: <span class="visibility"></span>KM</p>
             </div>
         `;
         return elementContainer;
@@ -50,21 +56,33 @@ function MainComponent(){
     const sectionTag = () => {
         const mainSection = document.createElement('section');
         mainSection.innerHTML = `
+            <div class="articleHeader">
+                <h3></h3>
+            </div>
             <div class="weatherDescription today"></div>
             <div class="weatherDescription tomorrow"></div>
             <div class="weatherDescription nextday"></div>
         `
         const weatherDescription = Array.from(mainSection.querySelectorAll('.weatherDescription'));
         weatherDescription.forEach(div => div.append(DescriptionContainer()));
+        const articleHeader = mainSection.querySelector('h3');
         //Display data from Api
 
-        DisplayAll(defaultLocation, weatherDescription);
+        DisplayAll(defaultLocation, weatherDescription, articleHeader);
         return mainSection;
+    }
+
+    const footerTag = () => {
+        const mainFooter = document.createElement('footer');
+        mainFooter.innerHTML = `
+            <p>&copy; 2023 Weather or Not. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        `;
+        return mainFooter;
     }
 
 
 
-    mainContainer.append(headerTag(), sectionTag());
+    mainContainer.append(headerTag(), sectionTag(), footerTag());
     return mainContainer
     
 }
