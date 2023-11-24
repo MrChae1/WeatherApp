@@ -1,0 +1,7 @@
+@import './variables';
+footer{
+    grid-area: 3/1/4/3;
+    @include perSection();
+    @include disPlay();
+    justify-content: center;
+}
