@@ -27,6 +27,8 @@ section{
                 text-align: center;
                 font-size: 1rem;
                 font-weight: bold;
+                padding-bottom: .5rem;
+                border-bottom: 5px solid #fff;
             }
             .articleSection{
                 grid-row:  2/3;
@@ -37,6 +39,7 @@ section{
                 justify-items: center;
                 text-align: end;
                 position: relative;
+                border-bottom: 5px solid  white;
                 h2{
                     grid-area: 1/1/3/2;
                     @include disPlay();
@@ -49,14 +52,14 @@ section{
                     width: 150px;
                     height: 150px;
                     right: 20px;
-                    top: 1px;
+                    top: -15px;
                 }
                 p{
                     grid-area: 2/2/3/3;
                     position: absolute;
                     font-weight: bold;
                     font-size: 1rem;
-                    top: 60px;
+                    top: 50px;
                 }
             }
             .subSection{
