@@ -22,10 +22,4 @@ export function DisplayAll(location, sectionDesc, articleHeader){
         }
     });
 }
-export function forDisplay(location, sectionTag){
-    console.log(location);
-    const newheader = sectionTag.querySelector('h3');
-    const newWeatherEl = Array.from(sectionTag.querySelectorAll('.weatherDescription'));
 
-    DisplayAll(location, newWeatherEl, newheader);
-}
