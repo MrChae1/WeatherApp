@@ -62,6 +62,15 @@ function MainComponent(){
 
     DisplayAll(defaultLocation, weatherDescription, articleHeader);
 
+    const appendModal = () =>{
+        const modalDiv = document.createElement('div');
+        modalDiv.classList.add('modalDiv');
+        modalDiv.innerHTML = `
+            <p>Please Wait it's loading...........</p>
+        `;
+
+        return modalDiv;
+    }
 
     const footerTag = () => {
         const mainFooter = document.createElement('footer');
@@ -73,7 +82,7 @@ function MainComponent(){
 
 
 
-    mainContainer.append(mainHeader, mainSection, footerTag());
+    mainContainer.append(mainHeader, mainSection, footerTag(), appendModal());
     return mainContainer
     
 }
