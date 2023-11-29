@@ -1,0 +1,13 @@
+@import './variables';
+
+.modalDiv{
+    @include forwidth(400px);
+    position: absolute;
+    top: 120px;
+    @include disPlay();
+    justify-content: center;
+    p{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
