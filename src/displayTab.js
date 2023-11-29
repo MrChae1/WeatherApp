@@ -1,7 +1,6 @@
 import './sass/mainStyle.scss';
 import { getResponse, TrueOrFalse } from './api';
 
-
 const getData = async (location) => {
     const response = await getResponse(location);
     return response;
@@ -21,5 +20,9 @@ export function DisplayAll(location, sectionDesc, articleHeader){
             newDesc[14].innerHTML = res.forecast.forecastday[i].day.avgvis_km;//visibility
         }
     });
+}
+
+export const Loading = () => {
+    
 }
 
