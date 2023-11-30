@@ -1,11 +1,15 @@
 import './sass/mainStyle.scss';
-import { getResponse, TrueOrFalse } from './api';
+import { getResponse } from './api';
+
+let isLoading = true;
 
 const getData = async (location) => {
     const response = await getResponse(location);
+    isLoading = false;
     return response;
 }
-export function DisplayAll(location, sectionDesc, articleHeader){
+export function DisplayAll(location, sectionDesc, articleHeader, mainSection,modalDiv){
+    Loading(mainSection, modalDiv);
     getData(location).then((res) =>{
         for(let i = 0; i < sectionDesc.length; i++){
             let newDesc = Array.from(sectionDesc[i].querySelectorAll('*'));
@@ -22,7 +26,8 @@ export function DisplayAll(location, sectionDesc, articleHeader){
     });
 }
 
-export const Loading = () => {
-    
+export const Loading = (mainSection, modalDiv) => {
+    mainSection.style.display = 'grid';
+    modalDiv.style.display = 'none';
 }
 
