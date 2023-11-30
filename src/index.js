@@ -58,19 +58,15 @@ function MainComponent(){
     const weatherDescription = Array.from(mainSection.querySelectorAll('.weatherDescription'));
     weatherDescription.forEach(div => div.append(DescriptionContainer()));
     const articleHeader = mainSection.querySelector('h3');
+
+    const modalDiv = document.createElement('div');
+    modalDiv.classList.add('modalDiv');
+    modalDiv.innerHTML = `
+        <p>Please Wait it's loading...........</p>
+    `;
     //Display data from Api
 
-    DisplayAll(defaultLocation, weatherDescription, articleHeader);
-
-    const appendModal = () =>{
-        const modalDiv = document.createElement('div');
-        modalDiv.classList.add('modalDiv');
-        modalDiv.innerHTML = `
-            <p>Please Wait it's loading...........</p>
-        `;
-
-        return modalDiv;
-    }
+    DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv);
 
     const footerTag = () => {
         const mainFooter = document.createElement('footer');
@@ -82,7 +78,7 @@ function MainComponent(){
 
 
 
-    mainContainer.append(mainHeader, mainSection, footerTag(), appendModal());
+    mainContainer.append(mainHeader, mainSection, footerTag(), modalDiv);
     return mainContainer
     
 }
