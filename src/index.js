@@ -21,7 +21,7 @@ function MainComponent(){
     const NavElement = Array.from(headerNav.querySelectorAll('*'));
         NavElement[1].addEventListener('click', () =>{
         defaultLocation = NavElement[0].value;
-        DisplayAll(defaultLocation, weatherDescription, articleHeader);  
+        DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv); 
     });
 
     mainHeader.appendChild(headerNav);
