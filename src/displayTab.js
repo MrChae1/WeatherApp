@@ -10,11 +10,12 @@ const getData = async (location) => {
 }
 export function DisplayAll(location, sectionDesc, articleHeader, mainSection,modalDiv){
     Loading(mainSection, modalDiv);
+    const dateDesc = ['TODAY', 'TOMORROW', 'NEXT DAY'];
     getData(location).then((res) =>{
         for(let i = 0; i < sectionDesc.length; i++){
             let newDesc = Array.from(sectionDesc[i].querySelectorAll('*'));
             articleHeader.innerHTML = res.location.name; //Location Name
-            newDesc[1].innerHTML = res.forecast.forecastday[i].date;
+            newDesc[1].innerHTML = dateDesc[i];
             newDesc[3].innerHTML = `${res.forecast.forecastday[i].day.avgtemp_c} °C`; //celsius/farah
             newDesc[4].src = res.forecast.forecastday[i].day.condition.icon; //Weather Images
             newDesc[5].innerHTML = res.forecast.forecastday[i].day.condition.text; //Weather description
