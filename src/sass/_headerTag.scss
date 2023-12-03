@@ -35,5 +35,9 @@ header{
                 @include forHover();
             }
         }
+        .Change-btn{
+            border-radius: 5px;
+            margin-left: 5px;
+        }
     } 
 }
