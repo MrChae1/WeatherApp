@@ -17,6 +17,7 @@ function MainComponent(){
     headerNav.innerHTML = `
         <input type="text" class="input-nav" placeholder="What's your Location?">
         <button class="find-btn">Find</button>
+        <button class="Change-btn"> °C / °F</button>
     `;
     const NavElement = Array.from(headerNav.querySelectorAll('*'));
         NavElement[1].addEventListener('click', () =>{
