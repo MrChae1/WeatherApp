@@ -2,6 +2,7 @@ import './sass/mainStyle.scss';
 import { DisplayAll } from './displayTab';
 function MainComponent(){
     let defaultLocation = 'Atlanta';
+    let celorFah = true;
     const mainContainer = document.createElement('main');
     mainContainer.classList.add('mainContainer');
 
@@ -23,6 +24,12 @@ function MainComponent(){
         NavElement[1].addEventListener('click', () =>{
         defaultLocation = NavElement[0].value;
         DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv); 
+    });
+
+    NavElement[2].addEventListener('click', ()=>{
+        if(celorFah === true){
+            
+        }
     });
 
     mainHeader.appendChild(headerNav);
