@@ -27,6 +27,10 @@ export function DisplayAll(location, sectionDesc, articleHeader, mainSection,mod
     });
 }
 
+export function ChangeTemp(){
+    
+}
+
 export const Loading = (mainSection, modalDiv) => {
     mainSection.style.display = 'grid';
     modalDiv.style.display = 'none';
