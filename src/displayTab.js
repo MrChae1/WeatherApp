@@ -8,7 +8,7 @@ const getData = async (location) => {
     isLoading = false;
     return response;
 }
-export function DisplayAll(location, sectionDesc, articleHeader, mainSection,modalDiv){
+export function DisplayAll(location, sectionDesc, articleHeader, mainSection,modalDiv, temp){
     Loading(mainSection, modalDiv);
     const dateDesc = ['TODAY', 'TOMORROW', 'NEXT DAY'];
     getData(location).then((res) =>{
@@ -16,7 +16,7 @@ export function DisplayAll(location, sectionDesc, articleHeader, mainSection,mod
             let newDesc = Array.from(sectionDesc[i].querySelectorAll('*'));
             articleHeader.innerHTML = res.location.name; //Location Name
             newDesc[1].innerHTML = dateDesc[i];
-            newDesc[3].innerHTML = `${res.forecast.forecastday[i].day.avgtemp_c} °C`; //celsius/farah
+            // newDesc[3].innerHTML = `${res.forecast.forecastday[i].day.avgtemp_c} °C`; //celsius/farah
             newDesc[4].src = res.forecast.forecastday[i].day.condition.icon; //Weather Images
             newDesc[5].innerHTML = res.forecast.forecastday[i].day.condition.text; //Weather description
             newDesc[8].innerHTML = res.forecast.forecastday[i].day.avghumidity; //Humidity
@@ -24,11 +24,19 @@ export function DisplayAll(location, sectionDesc, articleHeader, mainSection,mod
             newDesc[12].innerHTML = res.forecast.forecastday[i].day.daily_chance_of_rain;//feelsLike
             newDesc[14].innerHTML = res.forecast.forecastday[i].day.avgvis_km;//visibility
         }
+        ChangeTemp(newDesc[3], temp, location, i)
     });
 }
 
-export function ChangeTemp(){
-    
+export function ChangeTemp(hTwo, temp, location, i){
+    getData(location).then((res) => {
+        if(temp === true){
+            hTwo.innerHTML = `${res.forecast.forecastday[i].day.avgtemp_c} °C`;
+        }
+        else{
+            hTwo.innerHTML = `${res.forecast.forecastday[i].day.avgtemp_f} °F`
+        }
+    });
 }
 
 export const Loading = (mainSection, modalDiv) => {
