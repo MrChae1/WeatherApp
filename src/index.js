@@ -1,5 +1,5 @@
 import './sass/mainStyle.scss';
-import { DisplayAll } from './displayTab';
+import { DisplayAll, ChangeTemp } from './displayTab';
 function MainComponent(){
     let defaultLocation = 'Atlanta';
     let celorFah = true;
@@ -23,12 +23,13 @@ function MainComponent(){
     const NavElement = Array.from(headerNav.querySelectorAll('*'));
         NavElement[1].addEventListener('click', () =>{
         defaultLocation = NavElement[0].value;
-        DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv); 
+        DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv, celorFah); 
     });
 
     NavElement[2].addEventListener('click', ()=>{
-        if(celorFah === true){
-            
+        const weatherH2 = Array.from(weatherDescription.querySelectorAll('.WeatherH2'));
+        for(let i = 0; i  < weatherDescription.length; i++){
+            ChangeTemp(weatherH2[i], celorFah, defaultLocation, i);
         }
     });
 
@@ -40,7 +41,7 @@ function MainComponent(){
         elementContainer.innerHTML = `
             <h5></h5>
             <div class="articleSection">
-                <h2></h2>
+                <h2 class="WeatherH2"></h2>
                 <img class="weatherImg" src="">
                 <p></p>
             </div>
