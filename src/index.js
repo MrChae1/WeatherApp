@@ -27,7 +27,8 @@ function MainComponent(){
     });
 
     NavElement[2].addEventListener('click', ()=>{
-        const weatherH2 = Array.from(weatherDescription.querySelectorAll('.WeatherH2'));
+        const weatherH2 = weatherDescription.map(key => key.querySelector('.WeatherH2'))
+        // console.log(weatherH2);
         for(let i = 0; i  < weatherDescription.length; i++){
             ChangeTemp(weatherH2[i], celorFah, defaultLocation, i);
         }
