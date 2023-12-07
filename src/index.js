@@ -28,10 +28,12 @@ function MainComponent(){
 
     NavElement[2].addEventListener('click', ()=>{
         const weatherH2 = weatherDescription.map(key => key.querySelector('.WeatherH2'))
-        // console.log(weatherH2);
+        celorFah = celorFah === true ? false : true; 
         for(let i = 0; i  < weatherDescription.length; i++){
             ChangeTemp(weatherH2[i], celorFah, defaultLocation, i);
         }
+        
+        
     });
 
     mainHeader.appendChild(headerNav);
@@ -76,7 +78,7 @@ function MainComponent(){
     `;
     //Display data from Api
 
-    DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv);
+    DisplayAll(defaultLocation, weatherDescription, articleHeader, mainSection, modalDiv, celorFah);
 
     const footerTag = () => {
         const mainFooter = document.createElement('footer');
