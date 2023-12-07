@@ -23,6 +23,7 @@ export function DisplayAll(location, sectionDesc, articleHeader, mainSection,mod
             newDesc[10].innerHTML = res.forecast.forecastday[i].day.maxwind_kph; //Wind
             newDesc[12].innerHTML = res.forecast.forecastday[i].day.daily_chance_of_rain;//feelsLike
             newDesc[14].innerHTML = res.forecast.forecastday[i].day.avgvis_km;//visibility
+            console.log(temp);
             ChangeTemp(newDesc[3], temp, location, i)
         }
         
@@ -30,6 +31,7 @@ export function DisplayAll(location, sectionDesc, articleHeader, mainSection,mod
 }
 
 export function ChangeTemp(hTwo, temp, location, i){
+    console.log(temp);
     getData(location).then((res) => {
         if(temp === true){
             hTwo.innerHTML = `${res.forecast.forecastday[i].day.avgtemp_c} °C`;
